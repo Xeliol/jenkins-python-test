@@ -14,5 +14,3 @@ class MinOfThreeVarsTestCase(unittest.TestCase):
     def test_min_a(self, name, input, expected):
         self.assertEqual(min_of_three_vars(*input), expected)
 
-
-        

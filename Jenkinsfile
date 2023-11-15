@@ -14,9 +14,22 @@ pipeline {
         }
         stage("test") {
         steps {
-            sh 'python -m nose2'
+            sh 'python -m coverage run -m nose2'
 
         }
         }
+        stage("report") {
+        steps {
+            sh 'python -m coverage report'
+	    sh 'python -m coverage xml'
+	    sh 'python -m coverage html'
+        }
+        }
+    post{
+    	always{
+    	    archiveartifacts 'htmlcov/*'
+    	    cobertura coberturaReportFile: 'coverage.xml'
+    	}
+    }
     }
 }
