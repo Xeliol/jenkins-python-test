@@ -25,11 +25,11 @@ pipeline {
 	    sh 'python -m coverage html'
         }
         }
+    }
     post{
     	always{
     	    archiveartifacts 'htmlcov/*'
     	    cobertura coberturaReportFile: 'coverage.xml'
     	}
-    }
     }
 }
