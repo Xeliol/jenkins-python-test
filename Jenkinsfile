@@ -27,7 +27,7 @@ pipeline {
         }
     }
     post{
-    	success{
+    	always{
     	    archiveartifacts 'htmlcov/*'
     	    cobertura coberturaReportFile: 'coverage.xml'
     	}
